@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792246248856,
+      "tag": "0000_watery_shadow_king",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792246285417,
+      "tag": "0001_appointment_slot_exclusion",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792246613386,
+      "tag": "0002_bumpy_lady_deathstrike",
+      "breakpoints": true
+    }
+  ]
+}

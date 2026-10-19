@@ -1,0 +1,131 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Karla", system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-blush: var(--blush);
+  --color-blush-foreground: var(--blush-foreground);
+  --color-taupe: var(--taupe);
+  --color-ivory: var(--ivory);
+  --color-surface: var(--surface);
+  --color-pending: var(--pending);
+  --color-pending-soft: var(--pending-soft);
+  --color-confirmed: var(--confirmed);
+  --color-confirmed-soft: var(--confirmed-soft);
+  --color-completed: var(--completed);
+  --color-completed-soft: var(--completed-soft);
+  --color-cancelled: var(--cancelled);
+  --color-cancelled-soft: var(--cancelled-soft);
+  --color-noshow: var(--noshow);
+  --color-noshow-soft: var(--noshow-soft);
+  --color-blocked: var(--blocked);
+  --shadow-soft: var(--shadow-soft-v);
+}
+
+:root {
+  --radius: 0.5rem;
+  --ivory: oklch(0.975 0.01 80);
+  --background: oklch(0.975 0.01 80);
+  --surface: oklch(0.995 0.004 80);
+  --foreground: oklch(0.25 0.012 50);
+  --card: oklch(0.995 0.004 80);
+  --card-foreground: oklch(0.25 0.012 50);
+  --popover: oklch(0.995 0.004 80);
+  --popover-foreground: oklch(0.25 0.012 50);
+  --primary: oklch(0.27 0.012 50);
+  --primary-foreground: oklch(0.975 0.01 80);
+  --secondary: oklch(0.94 0.015 60);
+  --secondary-foreground: oklch(0.27 0.012 50);
+  --muted: oklch(0.945 0.012 70);
+  --muted-foreground: oklch(0.48 0.02 50);
+  --accent: oklch(0.93 0.03 30);
+  --accent-foreground: oklch(0.27 0.012 50);
+  --blush: oklch(0.88 0.045 25);
+  --blush-foreground: oklch(0.3 0.04 25);
+  --taupe: oklch(0.6 0.03 55);
+  --destructive: oklch(0.55 0.19 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.89 0.015 60);
+  --input: oklch(0.86 0.018 60);
+  --ring: oklch(0.45 0.06 30);
+  --pending: oklch(0.5 0.12 70);
+  --pending-soft: oklch(0.94 0.06 85);
+  --confirmed: oklch(0.42 0.09 155);
+  --confirmed-soft: oklch(0.93 0.04 155);
+  --completed: oklch(0.42 0.07 250);
+  --completed-soft: oklch(0.93 0.03 250);
+  --cancelled: oklch(0.5 0.01 60);
+  --cancelled-soft: oklch(0.93 0.005 60);
+  --noshow: oklch(0.5 0.16 27);
+  --noshow-soft: oklch(0.93 0.04 27);
+  --blocked: oklch(0.9 0.008 60);
+  --shadow-soft-v: 0 10px 30px -12px oklch(0.27 0.012 50 / 0.25);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .surface {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft-v);
+  }
+  .status-pending { background: var(--pending-soft); color: var(--foreground); }
+  .status-confirmed { background: var(--confirmed-soft); color: var(--foreground); }
+  .status-completed { background: var(--completed-soft); color: var(--foreground); }
+  .status-cancelled { background: var(--cancelled-soft); color: var(--muted-foreground); text-decoration: line-through; }
+  .status-declined { background: var(--cancelled-soft); color: var(--destructive); }
+  .status-no_show { background: var(--noshow-soft); color: var(--destructive); }
+  .status-expired { background: var(--muted); color: var(--muted-foreground); }
+}
+
+@utility blocked-stripes {
+  background-image: repeating-linear-gradient(45deg, var(--blocked) 0 6px, transparent 6px 12px);
+}

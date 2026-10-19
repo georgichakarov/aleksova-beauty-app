@@ -1,0 +1,2 @@
+ALTER TABLE "appointments" DROP CONSTRAINT "appointments_status_valid";--> statement-breakpoint
+ALTER TABLE "appointments" ADD CONSTRAINT "appointments_status_valid" CHECK ("appointments"."status" IN ('pending', 'confirmed', 'completed', 'cancelled', 'declined', 'no_show', 'expired'));
