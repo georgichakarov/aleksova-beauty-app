@@ -44,7 +44,7 @@ try {
   const count = await client.query<{ count: string }>('SELECT count(*)::text AS count FROM "user"');
   if (Number(count.rows[0]?.count ?? 0) > 0)
     throw new Error("An account already exists. Public owner registration is disabled.");
-  const name = (await prompt.question("Owner name: ")).trim();
+  const name = process.env["OWNER_NAME"]?.trim() || (await prompt.question("Owner name: ")).trim();
   prompt.close();
   const password = await readSecret("Password (12-128 characters): ");
   const confirmation = await readSecret("Confirm password: ");

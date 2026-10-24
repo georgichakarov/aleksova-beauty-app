@@ -20,10 +20,10 @@ Docker is not installed in the current environment. PGlite provides the local Po
 
 ```sh
 npm install --legacy-peer-deps
-cp .env.example .env
+npm run env:setup
 ```
 
-The example uses `admin@aleksova.test` as a local-only demo email. Replace `OWNER_EMAIL` in `.env` with the address you want to use for sign-in. Generate `BETTER_AUTH_SECRET` locally, for example with `openssl rand -base64 32`; keep the resulting value only in `.env`. Do not commit `.env` or share the secret.
+`env:setup` creates `.env` with mode `0600`, preserves the local-only demo email `admin@aleksova.test`, and generates a fresh random `BETTER_AUTH_SECRET` without printing it. Change `OWNER_EMAIL` in `.env` if you prefer another sign-in email. Do not commit `.env` or share the secret.
 
 Then initialize the local database and owner account:
 
@@ -33,7 +33,7 @@ npm run db:seed
 npm run owner:setup
 ```
 
-`owner:setup` asks for the owner's display name and prompts for a 12-128 character password without echoing it. It refuses to create an account if the database already contains a user. Public registration stays disabled during normal app operation.
+`owner:setup` uses the demo display name `Demo Admin` and prompts for a 12-128 character password without echoing it. It refuses to create an account if the database already contains a user. Public registration stays disabled during normal app operation.
 
 `db:seed` is an explicit, non-overwriting development fixture command. It adds the prototype's sample lash/makeup services and weekly hours only; it creates no clients or bookings. Names, prices, durations, descriptions, and hours are not confirmed business information. Review and edit them in `/admin` before enabling online bookings. The public page labels the sample values, and missing address, phone, introduction, and portfolio imagery are marked as placeholders.
 
