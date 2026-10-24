@@ -23,7 +23,7 @@ npm install --legacy-peer-deps
 cp .env.example .env
 ```
 
-Edit `.env` and set `OWNER_EMAIL` to the email that will sign in as the owner. Generate `BETTER_AUTH_SECRET` locally, for example with `openssl rand -base64 32`; keep the resulting value only in `.env`. Do not commit `.env` or share the secret.
+The example uses `admin@aleksova.test` as a local-only demo email. Replace `OWNER_EMAIL` in `.env` with the address you want to use for sign-in. Generate `BETTER_AUTH_SECRET` locally, for example with `openssl rand -base64 32`; keep the resulting value only in `.env`. Do not commit `.env` or share the secret.
 
 Then initialize the local database and owner account:
 
